@@ -1,9 +1,9 @@
 pragma solidity ^0.4.2;
 
-contract DappToken {
-    string  public name = "DApp Token";
-    string  public symbol = "DAPP";
-    string  public standard = "DApp Token v1.0";
+contract LoyaltyToken {
+    string  public name = "Loyalty Token";
+    string  public symbol = "LOYALTY";
+    string  public standard = "Loyalty Token v1.0";
     uint256 public totalSupply;
 
     event Transfer(
@@ -21,7 +21,7 @@ contract DappToken {
     mapping(address => uint256) public balanceOf;
     mapping(address => mapping(address => uint256)) public allowance;
 
-    function DappToken (uint256 _initialSupply) public {
+    function LoyaltyToken (uint256 _initialSupply) public {
         balanceOf[msg.sender] = _initialSupply;
         totalSupply = _initialSupply;
     }

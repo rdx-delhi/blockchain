@@ -1,7 +1,7 @@
 {
-  "name": "dapp-token-sale",
+  "name": "loyalty-token-sale",
   "version": "1.0.0",
-  "description": "Dapp Token Sale ICO",
+  "description": "Loyalty Token Sale ICO",
   "main": "truffle.js",
   "directories": {
     "test": "test"
@@ -9,8 +9,7 @@
   "scripts": {
     "dev": "lite-server"
   },
-  "author": "Gregory",
-  "license": "ISC",
+  "license": "UNLICENSED",
   "devDependencies": {
     "lite-server": "^2.3.0"
   }

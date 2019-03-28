@@ -1,5 +1,5 @@
 {
-  "contractName": "DappTokenSale",
+  "contractName": "LoyaltyTokenSale",
   "abi": [
     {
       "constant": true,
@@ -103,12 +103,12 @@
   "deployedBytecode": "0x60606040526004361061006d576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680633610724e14610072578063380d831b1461008a578063518ab2a81461009f57806355a373d6146100c85780637ff9b5961461011d575b600080fd5b6100886004808035906020019091905050610146565b005b341561009557600080fd5b61009d6103be565b005b34156100aa57600080fd5b6100b2610686565b6040518082815260200191505060405180910390f35b34156100d357600080fd5b6100db61068c565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561012857600080fd5b6101306106b2565b6040518082815260200191505060405180910390f35b610152816002546106b8565b3414151561015f57600080fd5b80600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a08231306000604051602001526040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b151561022557600080fd5b6102c65a03f1151561023657600080fd5b505050604051805190501015151561024d57600080fd5b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a9059cbb33836000604051602001526040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b151561031a57600080fd5b6102c65a03f1151561032b57600080fd5b50505060405180519050151561034057600080fd5b806003600082825401925050819055507f5e5e995ce3133561afceaa51a9a154d5db228cd7525d34df5185582c18d3df093382604051808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018281526020019250505060405180910390a150565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561041957600080fd5b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663a9059cbb6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff16600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166370a08231306000604051602001526040518263ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001915050602060405180830381600087803b151561053e57600080fd5b6102c65a03f1151561054f57600080fd5b505050604051805190506000604051602001526040518363ffffffff167c0100000000000000000000000000000000000000000000000000000000028152600401808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200182815260200192505050602060405180830381600087803b15156105e657600080fd5b6102c65a03f115156105f757600080fd5b50505060405180519050151561060c57600080fd5b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff166108fc3073ffffffffffffffffffffffffffffffffffffffff16319081150290604051600060405180830381858888f19350505050151561068457600080fd5b565b60035481565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60025481565b6000808214806106d7575082828385029250828115156106d457fe5b04145b15156106e257600080fd5b929150505600a165627a7a72305820a3f9763a4bc356779f7b3121c750f15f14e758e6e91cca9ec2fd2a9a47ce9ef40029",
   "sourceMap": "52:1183:1:-;;;249:186;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;344:10;336:5;;:18;;;;;;;;;;;;;;;;;;380:14;364:13;;:30;;;;;;;;;;;;;;;;;;417:11;404:10;:24;;;;249:186;;52:1183;;;;;;",
   "deployedSourceMap": "52:1183:1:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;568:356;;;;;;;;;;;;;;;;;;930:303;;;;;;;;;;;;;;167:25;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;100:30;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;136:25;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;568:356;658:37;667:15;684:10;;658:8;:37::i;:::-;645:9;:50;637:59;;;;;;;;747:15;714:13;;;;;;;;;;;:23;;;738:4;714:29;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:48;;706:57;;;;;;;;781:13;;;;;;;;;;;:22;;;804:10;816:15;781:51;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;773:60;;;;;;;;858:15;844:10;;:29;;;;;;;;;;;884:33;889:10;901:15;884:33;;;;;;;;;;;;;;;;;;;;;;;;;;;;568:356;:::o;930:303::-;988:5;;;;;;;;;;;974:19;;:10;:19;;;966:28;;;;;;;;1012:13;;;;;;;;;;;:22;;;1035:5;;;;;;;;;;;1042:13;;;;;;;;;;;:23;;;1066:4;1042:29;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1012:60;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1004:69;;;;;;;;1189:5;;;;;;;;;;;:14;;:37;1212:4;1204:21;;;1189:37;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;930:303::o;167:25::-;;;;:::o;100:30::-;;;;;;;;;;;;;:::o;136:25::-;;;;:::o;441:121::-;498:6;529:1;524;:6;:30;;;;553:1;548;543;539;:5;535:9;;;534:15;;;;;;;;:20;524:30;516:39;;;;;;;;441:121;;;;:::o",
-  "source": "pragma solidity ^0.4.2;\n\nimport \"./DappToken.sol\";\n\ncontract DappTokenSale {\n    address admin;\n    DappToken public tokenContract;\n    uint256 public tokenPrice;\n    uint256 public tokensSold;\n\n    event Sell(address _buyer, uint256 _amount);\n\n    function DappTokenSale(DappToken _tokenContract, uint256 _tokenPrice) public {\n        admin = msg.sender;\n        tokenContract = _tokenContract;\n        tokenPrice = _tokenPrice;\n    }\n\n    function multiply(uint x, uint y) internal pure returns (uint z) {\n        require(y == 0 || (z = x * y) / y == x);\n    }\n\n    function buyTokens(uint256 _numberOfTokens) public payable {\n        require(msg.value == multiply(_numberOfTokens, tokenPrice));\n        require(tokenContract.balanceOf(this) >= _numberOfTokens);\n        require(tokenContract.transfer(msg.sender, _numberOfTokens));\n\n        tokensSold += _numberOfTokens;\n\n        Sell(msg.sender, _numberOfTokens);\n    }\n\n    function endSale() public {\n        require(msg.sender == admin);\n        require(tokenContract.transfer(admin, tokenContract.balanceOf(this)));\n\n        // UPDATE: Let's not destroy the contract here\n        // Just transfer the balance to the admin\n        admin.transfer(address(this).balance);\n    }\n}\n",
-  "sourcePath": "/Users/gregory/code/token_sale/contracts/DappTokenSale.sol",
+  "source": "pragma solidity ^0.4.2;\n\nimport \"./LoyaltyToken.sol\";\n\ncontract LoyaltyTokenSale {\n    address admin;\n    LoyaltyToken public tokenContract;\n    uint256 public tokenPrice;\n    uint256 public tokensSold;\n\n    event Sell(address _buyer, uint256 _amount);\n\n    function LoyaltyTokenSale(LoyaltyToken _tokenContract, uint256 _tokenPrice) public {\n        admin = msg.sender;\n        tokenContract = _tokenContract;\n        tokenPrice = _tokenPrice;\n    }\n\n    function multiply(uint x, uint y) internal pure returns (uint z) {\n        require(y == 0 || (z = x * y) / y == x);\n    }\n\n    function buyTokens(uint256 _numberOfTokens) public payable {\n        require(msg.value == multiply(_numberOfTokens, tokenPrice));\n        require(tokenContract.balanceOf(this) >= _numberOfTokens);\n        require(tokenContract.transfer(msg.sender, _numberOfTokens));\n\n        tokensSold += _numberOfTokens;\n\n        Sell(msg.sender, _numberOfTokens);\n    }\n\n    function endSale() public {\n        require(msg.sender == admin);\n        require(tokenContract.transfer(admin, tokenContract.balanceOf(this)));\n\n        // UPDATE: Let's not destroy the contract here\n        // Just transfer the balance to the admin\n        admin.transfer(address(this).balance);\n    }\n}\n",
+  "sourcePath": "C:/Users/vatsa/Documents/GitHub/blockchain/contracts/LoyaltyTokenSale.sol",
   "ast": {
-    "absolutePath": "/Users/gregory/code/token_sale/contracts/DappTokenSale.sol",
+    "absolutePath": "C:/Users/vatsa/Documents/GitHub/blockchain/contracts/LoyaltyTokenSale.sol",
     "exportedSymbols": {
-      "DappTokenSale": [
+      "LoyaltyTokenSale": [
         326
       ]
     },
@@ -127,8 +127,8 @@
         "src": "0:23:1"
       },
       {
-        "absolutePath": "/Users/gregory/code/token_sale/contracts/DappToken.sol",
-        "file": "./DappToken.sol",
+        "absolutePath": "C:/Users/vatsa/Documents/GitHub/blockchain/contracts/LoyaltyToken.sol",
+        "file": "./LoyaltyToken.sol",
         "id": 188,
         "nodeType": "ImportDirective",
         "scope": 327,
@@ -147,7 +147,7 @@
         "linearizedBaseContracts": [
           326
         ],
-        "name": "DappTokenSale",
+        "name": "LoyaltyTokenSale",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
@@ -186,19 +186,19 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_DappToken_$185",
-              "typeString": "contract DappToken"
+              "typeIdentifier": "t_contract$_LoyaltyToken_$185",
+              "typeString": "contract LoyaltyToken"
             },
             "typeName": {
               "contractScope": null,
               "id": 191,
-              "name": "DappToken",
+              "name": "LoyaltyToken",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 185,
               "src": "100:9:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_DappToken_$185",
-                "typeString": "contract DappToken"
+                "typeIdentifier": "t_contract$_LoyaltyToken_$185",
+                "typeString": "contract LoyaltyToken"
               }
             },
             "value": null,
@@ -409,8 +409,8 @@
                       "referencedDeclaration": 192,
                       "src": "364:13:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_DappToken_$185",
-                        "typeString": "contract DappToken"
+                        "typeIdentifier": "t_contract$_LoyaltyToken_$185",
+                        "typeString": "contract LoyaltyToken"
                       }
                     },
                     "nodeType": "Assignment",
@@ -424,14 +424,14 @@
                       "referencedDeclaration": 204,
                       "src": "380:14:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_DappToken_$185",
-                        "typeString": "contract DappToken"
+                        "typeIdentifier": "t_contract$_LoyaltyToken_$185",
+                        "typeString": "contract LoyaltyToken"
                       }
                     },
                     "src": "364:30:1",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_DappToken_$185",
-                      "typeString": "contract DappToken"
+                      "typeIdentifier": "t_contract$_LoyaltyToken_$185",
+                      "typeString": "contract LoyaltyToken"
                     }
                   },
                   "id": 217,
@@ -491,7 +491,7 @@
             "isConstructor": true,
             "isDeclaredConst": false,
             "modifiers": [],
-            "name": "DappTokenSale",
+            "name": "LoyaltyTokenSale",
             "nodeType": "FunctionDefinition",
             "parameters": {
               "id": 207,
@@ -507,19 +507,19 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_DappToken_$185",
-                    "typeString": "contract DappToken"
+                    "typeIdentifier": "t_contract$_LoyaltyToken_$185",
+                    "typeString": "contract LoyaltyToken"
                   },
                   "typeName": {
                     "contractScope": null,
                     "id": 203,
-                    "name": "DappToken",
+                    "name": "LoyaltyToken",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 185,
                     "src": "272:9:1",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_DappToken_$185",
-                      "typeString": "contract DappToken"
+                      "typeIdentifier": "t_contract$_LoyaltyToken_$185",
+                      "typeString": "contract LoyaltyToken"
                     }
                   },
                   "value": null,
@@ -1133,16 +1133,16 @@
                               "referencedDeclaration": 351,
                               "src": "738:4:1",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_DappTokenSale_$326",
-                                "typeString": "contract DappTokenSale"
+                                "typeIdentifier": "t_contract$_LoyaltyTokenSale_$326",
+                                "typeString": "contract LoyaltyTokenSale"
                               }
                             }
                           ],
                           "expression": {
                             "argumentTypes": [
                               {
-                                "typeIdentifier": "t_contract$_DappTokenSale_$326",
-                                "typeString": "contract DappTokenSale"
+                                "typeIdentifier": "t_contract$_LoyaltyTokenSale_$326",
+                                "typeString": "contract LoyaltyTokenSale"
                               }
                             ],
                             "expression": {
@@ -1154,8 +1154,8 @@
                               "referencedDeclaration": 192,
                               "src": "714:13:1",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_DappToken_$185",
-                                "typeString": "contract DappToken"
+                                "typeIdentifier": "t_contract$_LoyaltyToken_$185",
+                                "typeString": "contract LoyaltyToken"
                               }
                             },
                             "id": 267,
@@ -1314,8 +1314,8 @@
                             "referencedDeclaration": 192,
                             "src": "781:13:1",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_DappToken_$185",
-                              "typeString": "contract DappToken"
+                              "typeIdentifier": "t_contract$_LoyaltyToken_$185",
+                              "typeString": "contract LoyaltyToken"
                             }
                           },
                           "id": 276,
@@ -1711,16 +1711,16 @@
                                 "referencedDeclaration": 351,
                                 "src": "1066:4:1",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_contract$_DappTokenSale_$326",
-                                  "typeString": "contract DappTokenSale"
+                                  "typeIdentifier": "t_contract$_LoyaltyTokenSale_$326",
+                                  "typeString": "contract LoyaltyTokenSale"
                                 }
                               }
                             ],
                             "expression": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_contract$_DappTokenSale_$326",
-                                  "typeString": "contract DappTokenSale"
+                                  "typeIdentifier": "t_contract$_LoyaltyTokenSale_$326",
+                                  "typeString": "contract LoyaltyTokenSale"
                                 }
                               ],
                               "expression": {
@@ -1732,8 +1732,8 @@
                                 "referencedDeclaration": 192,
                                 "src": "1042:13:1",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_contract$_DappToken_$185",
-                                  "typeString": "contract DappToken"
+                                  "typeIdentifier": "t_contract$_LoyaltyToken_$185",
+                                  "typeString": "contract LoyaltyToken"
                                 }
                               },
                               "id": 309,
@@ -1785,8 +1785,8 @@
                             "referencedDeclaration": 192,
                             "src": "1012:13:1",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_DappToken_$185",
-                              "typeString": "contract DappToken"
+                              "typeIdentifier": "t_contract$_LoyaltyToken_$185",
+                              "typeString": "contract LoyaltyToken"
                             }
                           },
                           "id": 306,
@@ -1872,16 +1872,16 @@
                               "referencedDeclaration": 351,
                               "src": "1212:4:1",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_DappTokenSale_$326",
-                                "typeString": "contract DappTokenSale"
+                                "typeIdentifier": "t_contract$_LoyaltyTokenSale_$326",
+                                "typeString": "contract LoyaltyTokenSale"
                               }
                             }
                           ],
                           "expression": {
                             "argumentTypes": [
                               {
-                                "typeIdentifier": "t_contract$_DappTokenSale_$326",
-                                "typeString": "contract DappTokenSale"
+                                "typeIdentifier": "t_contract$_LoyaltyTokenSale_$326",
+                                "typeString": "contract LoyaltyTokenSale"
                               }
                             ],
                             "id": 318,
@@ -2014,9 +2014,9 @@
     "src": "0:1236:1"
   },
   "legacyAST": {
-    "absolutePath": "/Users/gregory/code/token_sale/contracts/DappTokenSale.sol",
+    "absolutePath": "C:/Users/vatsa/Documents/GitHub/blockchain/contracts/LoyaltyTokenSale.sol",
     "exportedSymbols": {
-      "DappTokenSale": [
+      "LoyaltyTokenSale": [
         326
       ]
     },
@@ -2035,8 +2035,8 @@
         "src": "0:23:1"
       },
       {
-        "absolutePath": "/Users/gregory/code/token_sale/contracts/DappToken.sol",
-        "file": "./DappToken.sol",
+        "absolutePath": "C:/Users/vatsa/Documents/GitHub/blockchain/contracts/LoyaltyToken.sol",
+        "file": "./LoyaltyToken.sol",
         "id": 188,
         "nodeType": "ImportDirective",
         "scope": 327,
@@ -2055,7 +2055,7 @@
         "linearizedBaseContracts": [
           326
         ],
-        "name": "DappTokenSale",
+        "name": "LoyaltyTokenSale",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
@@ -2094,19 +2094,19 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_DappToken_$185",
-              "typeString": "contract DappToken"
+              "typeIdentifier": "t_contract$_LoyaltyToken_$185",
+              "typeString": "contract LoyaltyToken"
             },
             "typeName": {
               "contractScope": null,
               "id": 191,
-              "name": "DappToken",
+              "name": "LoyaltyToken",
               "nodeType": "UserDefinedTypeName",
               "referencedDeclaration": 185,
               "src": "100:9:1",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_DappToken_$185",
-                "typeString": "contract DappToken"
+                "typeIdentifier": "t_contract$_LoyaltyToken_$185",
+                "typeString": "contract LoyaltyToken"
               }
             },
             "value": null,
@@ -2317,8 +2317,8 @@
                       "referencedDeclaration": 192,
                       "src": "364:13:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_DappToken_$185",
-                        "typeString": "contract DappToken"
+                        "typeIdentifier": "t_contract$_LoyaltyToken_$185",
+                        "typeString": "contract LoyaltyToken"
                       }
                     },
                     "nodeType": "Assignment",
@@ -2332,14 +2332,14 @@
                       "referencedDeclaration": 204,
                       "src": "380:14:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_DappToken_$185",
-                        "typeString": "contract DappToken"
+                        "typeIdentifier": "t_contract$_LoyaltyToken_$185",
+                        "typeString": "contract LoyaltyToken"
                       }
                     },
                     "src": "364:30:1",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_DappToken_$185",
-                      "typeString": "contract DappToken"
+                      "typeIdentifier": "t_contract$_LoyaltyToken_$185",
+                      "typeString": "contract LoyaltyToken"
                     }
                   },
                   "id": 217,
@@ -2399,7 +2399,7 @@
             "isConstructor": true,
             "isDeclaredConst": false,
             "modifiers": [],
-            "name": "DappTokenSale",
+            "name": "LoyaltyTokenSale",
             "nodeType": "FunctionDefinition",
             "parameters": {
               "id": 207,
@@ -2415,19 +2415,19 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_DappToken_$185",
-                    "typeString": "contract DappToken"
+                    "typeIdentifier": "t_contract$_LoyaltyToken_$185",
+                    "typeString": "contract LoyaltyToken"
                   },
                   "typeName": {
                     "contractScope": null,
                     "id": 203,
-                    "name": "DappToken",
+                    "name": "LoyaltyToken",
                     "nodeType": "UserDefinedTypeName",
                     "referencedDeclaration": 185,
                     "src": "272:9:1",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_DappToken_$185",
-                      "typeString": "contract DappToken"
+                      "typeIdentifier": "t_contract$_LoyaltyToken_$185",
+                      "typeString": "contract LoyaltyToken"
                     }
                   },
                   "value": null,
@@ -3041,16 +3041,16 @@
                               "referencedDeclaration": 351,
                               "src": "738:4:1",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_DappTokenSale_$326",
-                                "typeString": "contract DappTokenSale"
+                                "typeIdentifier": "t_contract$_LoyaltyTokenSale_$326",
+                                "typeString": "contract LoyaltyTokenSale"
                               }
                             }
                           ],
                           "expression": {
                             "argumentTypes": [
                               {
-                                "typeIdentifier": "t_contract$_DappTokenSale_$326",
-                                "typeString": "contract DappTokenSale"
+                                "typeIdentifier": "t_contract$_LoyaltyTokenSale_$326",
+                                "typeString": "contract LoyaltyTokenSale"
                               }
                             ],
                             "expression": {
@@ -3062,8 +3062,8 @@
                               "referencedDeclaration": 192,
                               "src": "714:13:1",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_DappToken_$185",
-                                "typeString": "contract DappToken"
+                                "typeIdentifier": "t_contract$_LoyaltyToken_$185",
+                                "typeString": "contract LoyaltyToken"
                               }
                             },
                             "id": 267,
@@ -3222,8 +3222,8 @@
                             "referencedDeclaration": 192,
                             "src": "781:13:1",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_DappToken_$185",
-                              "typeString": "contract DappToken"
+                              "typeIdentifier": "t_contract$_LoyaltyToken_$185",
+                              "typeString": "contract LoyaltyToken"
                             }
                           },
                           "id": 276,
@@ -3619,16 +3619,16 @@
                                 "referencedDeclaration": 351,
                                 "src": "1066:4:1",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_contract$_DappTokenSale_$326",
-                                  "typeString": "contract DappTokenSale"
+                                  "typeIdentifier": "t_contract$_LoyaltyTokenSale_$326",
+                                  "typeString": "contract LoyaltyTokenSale"
                                 }
                               }
                             ],
                             "expression": {
                               "argumentTypes": [
                                 {
-                                  "typeIdentifier": "t_contract$_DappTokenSale_$326",
-                                  "typeString": "contract DappTokenSale"
+                                  "typeIdentifier": "t_contract$_LoyaltyTokenSale_$326",
+                                  "typeString": "contract LoyaltyTokenSale"
                                 }
                               ],
                               "expression": {
@@ -3640,8 +3640,8 @@
                                 "referencedDeclaration": 192,
                                 "src": "1042:13:1",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_contract$_DappToken_$185",
-                                  "typeString": "contract DappToken"
+                                  "typeIdentifier": "t_contract$_LoyaltyToken_$185",
+                                  "typeString": "contract LoyaltyToken"
                                 }
                               },
                               "id": 309,
@@ -3693,8 +3693,8 @@
                             "referencedDeclaration": 192,
                             "src": "1012:13:1",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_DappToken_$185",
-                              "typeString": "contract DappToken"
+                              "typeIdentifier": "t_contract$_LoyaltyToken_$185",
+                              "typeString": "contract LoyaltyToken"
                             }
                           },
                           "id": 306,
@@ -3780,16 +3780,16 @@
                               "referencedDeclaration": 351,
                               "src": "1212:4:1",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_DappTokenSale_$326",
-                                "typeString": "contract DappTokenSale"
+                                "typeIdentifier": "t_contract$_LoyaltyTokenSale_$326",
+                                "typeString": "contract LoyaltyTokenSale"
                               }
                             }
                           ],
                           "expression": {
                             "argumentTypes": [
                               {
-                                "typeIdentifier": "t_contract$_DappTokenSale_$326",
-                                "typeString": "contract DappTokenSale"
+                                "typeIdentifier": "t_contract$_LoyaltyTokenSale_$326",
+                                "typeString": "contract LoyaltyTokenSale"
                               }
                             ],
                             "id": 318,
